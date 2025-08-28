@@ -4,5 +4,5 @@
 >>> Book.objects.all()
 <QuerySet [<Book: Django Basics>]>
 
->>> Book.objects.get(title="Django Basics")
+>>> Book.objects.get(title=["1984"])
 <Book: Django Basics>
