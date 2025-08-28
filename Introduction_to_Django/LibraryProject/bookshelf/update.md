@@ -5,5 +5,5 @@
 >>> b1.author = “George Orwell”
 >>> b1.save()
 
->>> Book.objects.get(title=“Nineteen Eighty-Four”)
+>>> ["book.title"](title=“Nineteen Eighty-Four”)
 <Book: Django Basics>
