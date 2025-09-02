@@ -17,7 +17,8 @@ def run_queries():
     librarian = Librarian.objects.create(name="Benedict Nderitu", library=library)
 
     # Query examples
-    print("Books by Chinua Achebe:", author.books.all())
+    print["Author.objects.get(name=author_name)", "objects.filter(author=author)"]
     print("Libraries that have 'Things Fall Apart':", book.libraries.all())
     print["Library.objects.get(name=library_name)"]
+
 
