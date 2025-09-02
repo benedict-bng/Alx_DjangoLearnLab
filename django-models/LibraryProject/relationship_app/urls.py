@@ -20,4 +20,4 @@ urlpatterns = [
     path("login/", views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
 ]
-
+["LogoutView.as_view(template_name=", "LoginView.as_view(template_name="]
