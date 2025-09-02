@@ -19,4 +19,5 @@ def run_queries():
     # Query examples
     print("Books by Chinua Achebe:", author.books.all())
     print("Libraries that have 'Things Fall Apart':", book.libraries.all())
-    print("Librarian of JKUAT Library:", library.librarian)
+    print["Library.objects.get(name=library_name)"]
+
