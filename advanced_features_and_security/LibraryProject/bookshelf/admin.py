@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Book
-
+["admin.site.register(CustomUser, CustomUserAdmin)"]
 # Custom admin class for Book model
 @admin.register(Book)  # This decorator registers the model
 class BookAdmin(admin.ModelAdmin):
@@ -17,4 +17,5 @@ class BookAdmin(admin.ModelAdmin):
     list_per_page = 25
     
     # EDIT FIELDS DIRECTLY IN LIST VIEW
+
     list_editable = ('publication_year',)
