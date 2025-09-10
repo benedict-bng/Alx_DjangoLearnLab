@@ -4,6 +4,7 @@ from django.shortcuts import render
 # advanced_features_and_security/relationship_app/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
+from .forms import ExampleForm
 from .models import Book
 
 @permission_required('relationship_app.can_view', raise_exception=True)
@@ -62,5 +63,6 @@ def book_create(request):
     else:
         form = BookForm()
     return render(request, "bookshelf/form_example.html", {"form": form})
+
 
 
