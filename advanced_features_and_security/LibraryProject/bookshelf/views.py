@@ -37,4 +37,30 @@ def book_delete(request, pk):
     book = get_object_or_404(Book, pk=pk)
     book.delete()
     return redirect('book_list')
+# bookshelf/views.py
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Book
+from .forms import BookForm
+
+def book_list(request):
+    # Safe ORM query, not raw SQL
+    books = Book.objects.all()
+    return render(request, "bookshelf/book_list.html", {"books": books})
+
+def book_search(request):
+    query = request.GET.get("q", "")
+    # Avoid raw SQL injection: use ORM filtering
+    results = Book.objects.filter(title__icontains=query)
+    return render(request, "bookshelf/book_list.html", {"books": results})
+
+def book_create(request):
+    if request.method == "POST":
+        form = BookForm(request.POST)
+        if form.is_valid():  # Validates & sanitizes user input
+            form.save()
+            return redirect("book_list")
+    else:
+        form = BookForm()
+    return render(request, "bookshelf/form_example.html", {"form": form})
+
 
