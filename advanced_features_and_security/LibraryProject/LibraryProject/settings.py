@@ -156,3 +156,30 @@ CSP_DEFAULT_SRC = ("'self'", )
 CSP_SCRIPT_SRC = ("'self'", 'https://cdnjs.cloudflare.com')  # Example: allow cdn
 CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
 
+# ==============================
+# 🔐 Security Settings (HTTPS)
+# ==============================
+
+# Force HTTPS for all requests
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP → HTTPS
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000   # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Prevent Content-Type sniffing
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enable Browser XSS Filter
+SECURE_BROWSER_XSS_FILTER = True
+
+# Prevent site from being loaded in <iframe>
+X_FRAME_OPTIONS = "DENY"
+
+# ==============================
+# 🔐 Secure Cookies
+# ==============================
+SESSION_COOKIE_SECURE = True  # Session cookies only via HTTPS
+CSRF_COOKIE_SECURE = True     # CSRF cookie only via HTTPS
+
