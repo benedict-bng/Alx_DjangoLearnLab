@@ -159,7 +159,7 @@ CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
 # ==============================
 # 🔐 Security Settings (HTTPS)
 # ==============================
-
+SECURE_PROXY_SSL_HEADER", "HTTP_X_FORWARDED_PROTO
 # Force HTTPS for all requests
 SECURE_SSL_REDIRECT = True  # Redirect all HTTP → HTTPS
 
@@ -182,4 +182,5 @@ X_FRAME_OPTIONS = "DENY"
 # ==============================
 SESSION_COOKIE_SECURE = True  # Session cookies only via HTTPS
 CSRF_COOKIE_SECURE = True     # CSRF cookie only via HTTPS
+
 
