@@ -124,3 +124,35 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False   # Turn this on only for local dev
+
+ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1']  # Set your domain / server IP
+
+# Browser security headers
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"
+
+# Cookies must be HTTPS only (set True in production with SSL)
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# HSTS (forces HTTPS, set when SSL is enabled in production)
+SECURE_HSTS_SECONDS = 31536000   # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Content Security Policy (CSP) – if using django-csp
+INSTALLED_APPS += [
+    'csp',
+]
+
+MIDDLEWARE += [
+    'csp.middleware.CSPMiddleware',
+]
+
+CSP_DEFAULT_SRC = ("'self'", )
+CSP_SCRIPT_SRC = ("'self'", 'https://cdnjs.cloudflare.com')  # Example: allow cdn
+CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
+
