@@ -7,4 +7,4 @@ class BookForm(forms.ModelForm):
         fields = ['title', 'author']
 
 
-
+"Example forms"
