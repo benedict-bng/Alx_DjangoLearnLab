@@ -34,3 +34,19 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),  # <-- Include your API routes here
 ]
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import BookList, BookViewSet
+
+# Create a router instance
+router = DefaultRouter()
+router.register(r'books_all', BookViewSet, basename='book_all')
+
+urlpatterns = [
+    # Your existing endpoint for list view
+    path('books/', BookList.as_view(), name='book-list'),
+
+    # All CRUD operations from router
+    path('', include(router.urls)),
+]
+
