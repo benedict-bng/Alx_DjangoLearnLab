@@ -28,6 +28,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post
 from .forms import PostForm
 
+Post.objects.filter
 class PostListView(ListView):
     model = Post
     template_name = "blog/post_list.html"
