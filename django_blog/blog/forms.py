@@ -25,3 +25,26 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Add a comment...'}),
         }
+from django import forms
+from .models import Post, Tag
+
+class PostForm(forms.ModelForm):
+    tags = forms.CharField(required=False, help_text="Comma-separated tags")
+
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'tags']
+
+    def save(self, commit=True, *args, **kwargs):
+        instance = super().save(commit=False)
+        if commit:
+            instance.save()
+            # Handle tags
+            tags_str = self.cleaned_data.get("tags", "")
+            tag_names = [t.strip() for t in tags_str.split(",") if t.strip()]
+            tags = []
+            for name in tag_names:
+                tag, created = Tag.objects.get_or_create(name=name.lower())
+                tags.append(tag)
+            instance.tags.set(tags)
+        return instance
